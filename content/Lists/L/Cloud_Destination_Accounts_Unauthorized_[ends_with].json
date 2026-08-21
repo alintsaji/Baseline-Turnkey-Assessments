@@ -1,0 +1,14 @@
+{
+  "id": "019de4e2-fa2f-76fb-ab4b-e6b8ceca36ff",
+  "name": "Cloud Destination Accounts - Unauthorized [ends with]",
+  "description": "Intent: Explicitly unauthorized cloud destination accounts — populate only with tenant-suffix patterns of accounts that must never be used (e.g., a known-bad partner spinoff, a deprecated tenant). Currently unconsumed — staged for future per-account block granularity beyond the Authorized/negated baseline; expected consumer surface is M2010 / W2010 / B2000. Exclusions: do not populate unless you have specific named account-level prohibitions; prefer leaving the Authorized list authoritative and letting non-listed accounts fall into Unauthorized.",
+  "type": "unmanaged",
+  "created_at": "2026-05-01T18:52:53.679451494Z",
+  "updated_at": "2026-05-01T18:52:53.679451494Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "patrick.collier@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//"
+  ]
+}

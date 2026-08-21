@@ -1,0 +1,277 @@
+{
+  "id": "019cb9af-de37-766a-9f8f-7d31023ea5af",
+  "version": "019e1133-e3f0-709c-9dc1-c852b6d380e4",
+  "type": "data_protection",
+  "name": "B1030 - Web - Other Control",
+  "description": "Intent: Block-tier hard enforcement on Web clipboard paste and upload to Other / catch-all Web destinations at sensitivity floor [3,4] — shuts down sensitive data exfil through web channels that aren't covered by a specialized B10xx policy. Exclusions: excludes domains in Websites_Authorized_Gen_AI_Domains_CAU_[is], Websites_Authorized_Internal_Sharepoint_Domains_[is], and Websites_Unauthorized_Incognito_Domain_URL_[contains]; ships disabled — enable after W1000 is clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Other",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "5f7120686f524ef349a041c5cfdf759ee3de1c0b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              },
+              {
+                "value": "b71dfdf864b2c9e3d623b824f8d5c943887b7a5a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20cc-4af9-7805-8e72-0dadf2508a9b"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b7cc5c3c4f198cdcb50e924a778e2dec08947943",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Other",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "5f7120686f524ef349a041c5cfdf759ee3de1c0b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              },
+              {
+                "value": "b71dfdf864b2c9e3d623b824f8d5c943887b7a5a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20cc-4af9-7805-8e72-0dadf2508a9b"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Other",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_contains",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "888b6d5afd28ec310d292b6cebf4103cd3b53efa",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20cc-4af9-7805-8e72-0dadf2508a9b"
+              },
+              {
+                "value": "2f4f9950c126aeda78c9329b8ee13279a2ae2721",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              },
+              {
+                "value": "6501c6d4ddd2c74401ad7640e9c8b019df1f156c",
+                "unit": "size_unit_unspecified",
+                "list_id": "019d513d-04c7-7dc1-bdf0-1061065a6fb0"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+      "019c20cc-4af9-7805-8e72-0dadf2508a9b",
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+      "019c20cc-4af9-7805-8e72-0dadf2508a9b",
+      "019c20cc-4af9-7805-8e72-0dadf2508a9b",
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+      "019d513d-04c7-7dc1-bdf0-1061065a6fb0"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "0f29f3a1-4b50-4f9b-9584-f830df57f2d8",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-04T16:30:36.599418172Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T09:24:33.868382753Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

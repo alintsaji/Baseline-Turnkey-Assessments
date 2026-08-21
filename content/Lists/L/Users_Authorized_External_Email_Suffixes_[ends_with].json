@@ -1,0 +1,14 @@
+{
+  "id": "019c20d6-b735-71be-a5fe-1965412d7357",
+  "name": "Users - Authorized - External Email Suffixes [ends with]",
+  "description": "Intent: Authorized external email-recipient suffixes — populate with vetted partner / customer / vendor email domains (e.g., @partner-co.com, @bigcustomer.com, @auditor-firm.com). Drives the Authorized External Email direction on D-series email and M3020 / W3000 / B3000 segmentation. Exclusions: do not add personal email domains (gmail.com, yahoo.com, outlook.com) — those are caught by the [CH] Personal Email Domains list and intentionally route to the Unauthorized warn/block path; do not add untrusted free providers.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T00:11:08.469110166Z",
+  "updated_at": "2026-05-10T03:13:00.240103048Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

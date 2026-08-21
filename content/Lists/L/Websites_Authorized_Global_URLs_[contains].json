@@ -1,0 +1,14 @@
+{
+  "id": "019dabef-aef0-731e-97bc-ef022ac9494b",
+  "name": "Websites - Authorized - Global URLs [contains]",
+  "description": "Intent: Authorized global URL substrings (path-level matching) — populate with URL fragments matching corporate resources where path granularity matters (e.g., /internal-api/, /tenant=acme/, /helpdesk/). Currently unconsumed — staged for future fine-grained URL-path allowlisting beyond domain-level matching; expected consumer surface is W1000 / B1000. Exclusions: do not use this for wildcard blocks; prefer the domain list above unless a single domain genuinely splits into authorized and unauthorized paths.",
+  "type": "unmanaged",
+  "created_at": "2026-04-20T17:28:25.072173440Z",
+  "updated_at": "2026-05-10T04:35:37.124640730Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

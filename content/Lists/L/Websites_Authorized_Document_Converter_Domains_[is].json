@@ -1,0 +1,14 @@
+{
+  "id": "019cc14e-05b0-7919-a46d-914a585800a8",
+  "name": "Websites - Authorized - Document Converter Domains [is]",
+  "description": "Intent: Authorized document-converter domains — populate with sanctioned online format converters your users are licensed to use (e.g., cloudconvert.com, smallpdf.com, ilovepdf.com, zamzar.com). Drives the Authorized split on M1040 and is negated in M1041 / W1041 / B1040 to define the unauthorized converter surface. Lower priority — only meaningful if your org prohibits or scrutinizes external document conversion. Exclusions: do not add free or unknown converters lacking encryption/deletion guarantees; do not add services with poor privacy policies.",
+  "type": "unmanaged",
+  "created_at": "2026-03-06T04:00:41.904592953Z",
+  "updated_at": "2026-03-06T04:00:41.904592953Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

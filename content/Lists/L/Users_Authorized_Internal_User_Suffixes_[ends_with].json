@@ -1,0 +1,14 @@
+{
+  "id": "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+  "name": "Users - Authorized - Internal User Suffixes [ends with]",
+  "description": "Intent: Authorized internal user / email suffixes — populate with every corporate domain you operate, including legacy variants in active use (e.g., @acme.com, @acme.co.uk, @acquired-co.com, @corp.acme.local). Drives the Internal/Authorized side across 29+ consumers including all 1xxx Web datasets/policies (M1010–M1071), 2xxx Cloud Storage, M3010 internal email, W3000 / B3000, and W2010. Top priority — highest-impact list in the v0 system. Exclusions: do not add contractor or partner domains; do not add deprecated domains you no longer route mail to.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T00:11:43.279736049Z",
+  "updated_at": "2026-05-10T03:12:12.970633902Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

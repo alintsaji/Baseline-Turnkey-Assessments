@@ -1,0 +1,110 @@
+{
+  "id": "019e105e-79f3-7a65-b3a0-b8a6d16d6d07",
+  "version": "019e1386-0e4e-7427-b922-843910166ab5",
+  "type": "data_protection",
+  "name": "W1061 - Web - Source Code & Developer Tools Governance",
+  "description": "Intent: Warn-tier user dialog on Web upload into the Unauthorized Source Code surface at sensitivity floor [2] — prompts the user before code or developer artifacts are pushed to non-sanctioned source-control platforms (public GitHub, personal GitLab, etc.). Exclusions: excludes domains in Websites_Authorized_Source_Code_&_Developer_Tools_Domains_[is]; tune by populating with corporate SCM instances (GitHub Enterprise, internal GitLab) so sanctioned repo work doesn't warn developers.",
+  "severity": "medium",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Source Code Management",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "4d9221ef23eefd6907cfa0840481ff081bd0c87d",
+                "unit": "size_unit_unspecified",
+                "list_id": "019dd5eb-84b7-7695-8601-d2e2bb789285"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019dd5eb-84b7-7695-8601-d2e2bb789285"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "10b101e9-5561-4569-9475-e69d5ed38a84",
+    "create_incident": true,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": true,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: {{action}} to {{destination}} is unauthorized.",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": "Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "warn"
+    }
+  },
+  "dataset_ids": [
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b"
+  ],
+  "created_at": "2026-05-10T05:31:27.603678962Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T05:32:23.628659088Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    2
+  ]
+}

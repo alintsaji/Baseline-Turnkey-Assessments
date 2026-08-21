@@ -1,0 +1,14 @@
+{
+  "id": "019e10ba-5ba7-739c-a508-d36f46726dc4",
+  "name": "Websites - Authorized - HR & Payroll [is]",
+  "description": "Intent: Authorized HR, Payroll and Expenses domains — populate with sanctioned HR/payroll/expense platforms (e.g., workday.com, adp.com, rippling.com, bamboohr.com, expensify.com). Drives the Authorized split on D1050 (Internal HR) and is negated to define the Unauthorized HR surface on D1051. Exclusions: do not add personal financial accounts; do not add competitor HR platforms your org doesn't license; keep the list narrow to authoritative corporate HR systems.",
+  "type": "unmanaged",
+  "created_at": "2026-05-10T07:11:49.159230939Z",
+  "updated_at": "2026-05-10T07:11:49.159230939Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

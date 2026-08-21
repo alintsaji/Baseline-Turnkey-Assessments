@@ -1,0 +1,9 @@
+{
+  "id": "019e1956-0fa4-74db-ab45-5081421edd04",
+  "name": "Endpoint Apps - Authorized - GenAI [is]",
+  "description": "Intent: Endpoint apps that implement GenAI capabilities and ARE explicitly approved for use on managed endpoints — populate with app-name patterns of sanctioned desktop GenAI clients (e.g., the corporate-approved Claude or ChatGPT desktop client, an approved local LLM runner). Consumer surface is the M5030 (authorized arm) / W5000 / B5000 endpoint-app pipeline; without this list, organizations that approve specific desktop GenAI clients have no way to distinguish their sanctioned tools from the generic Unauthorized GenAI baseline. Exclusions: do not put browser-based GenAI here — those belong on the Websites - Authorized - Gen AI Domains [is] lists. Do not duplicate the [CH] curated GenAI list — populate with org-specific approvals only.",
+  "type": "unmanaged",
+  "items": [
+    "//placeholder"
+  ]
+}

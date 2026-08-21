@@ -1,0 +1,14 @@
+{
+  "id": "019de508-8cdd-7de8-bf55-1de1fb6e5b13",
+  "name": "File Paths - Authorized - Sensitive Internal Network Share [contains]",
+  "description": "Intent: Sensitive internal network-share substrings — populate with path fragments matching high-stakes content (e.g., \\Finance\\, \\Legal\\, \\Executive\\, \\HR\\Compensation\\, \\MNA\\) for elevated review. Drives the augmented D8011 / B8000 sensitive-share carve-out on top of D8010 base coverage. Substring-matched via [contains] — placement of the fragment matters. Exclusions: do not add general-purpose folder substrings (\\Public\\, \\Shared\\); fragments that could collide with other non-sensitive folders will misroute traffic — keep them specific.",
+  "type": "unmanaged",
+  "created_at": "2026-05-01T19:33:56.061906887Z",
+  "updated_at": "2026-05-01T19:33:56.061906887Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "019c219c-d224-766f-9b9c-bff44f0b0af9",
+  "name": "USB - Authorized - Device IDs [is]",
+  "description": "Intent: Authorized USB device IDs — populate with vendor/product IDs or serial numbers of every corporate-issued encrypted USB and sanctioned SD device (e.g., 0781:556d for a known SanDisk model, or specific serials of issued IronKeys). Drives the Authorized split on M7000 and is negated in M7010 / W7010 / B7000 to define the unauthorized removable-media surface. Lower priority unless your org runs a USB encryption / inventory program. Exclusions: do not add devices without verifiable hardware IDs; do not list user-owned drives.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T03:47:31.492415348Z",
+  "updated_at": "2026-02-03T03:47:31.492415348Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

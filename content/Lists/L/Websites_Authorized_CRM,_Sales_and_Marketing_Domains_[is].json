@@ -1,0 +1,14 @@
+{
+  "id": "019e12b0-5bbc-741a-96c9-73c29b21e7d9",
+  "name": "Websites - Authorized - CRM, Sales and Marketing Domains [is]",
+  "description": "Intent: Authorized CRM, Sales and Marketing domains — populate with sanctioned CRM / marketing platforms (e.g., salesforce.com, hubspot.com, dynamics.microsoft.com, marketo.com, pipedrive.com). Drives the Authorized split on D1040 (Internal CRM) and is negated to define the Unauthorized CRM surface on D1041. Currently consumed at the dataset layer; downstream M1040/M1041 policies inherit segmentation. Exclusions: do not add unapproved marketing-automation or sales-engagement tools; do not add free-tier accounts on otherwise-licensed platforms unless they map to corporate identity.",
+  "type": "unmanaged",
+  "created_at": "2026-05-10T16:20:08.252265763Z",
+  "updated_at": "2026-05-10T16:20:08.252265763Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

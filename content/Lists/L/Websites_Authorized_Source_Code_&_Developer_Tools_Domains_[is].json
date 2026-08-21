@@ -1,0 +1,14 @@
+{
+  "id": "019dd5eb-84b7-7695-8601-d2e2bb789285",
+  "name": "Websites - Authorized - Source Code & Developer Tools Domains [is]",
+  "description": "Intent: Authorized source code and developer-tools domains — populate with sanctioned SCM / dev-tool platforms (e.g., github.acme.com (Enterprise), gitlab.acme.com, bitbucket.acme.com, artifactory.acme.com, jfrog.com). Drives the Authorized split on D1070 / D1070A / M1060 (Internal source code, including the secrets-augmented critical surface) and is negated to define the Unauthorized SCM surface on D1071 / M1061 / W1061 / B1060. Top priority. Exclusions: do not add public registries unless you actively use them as corporate dependencies; do not add personal-account git hosts.",
+  "type": "unmanaged",
+  "created_at": "2026-04-28T21:07:55.191410475Z",
+  "updated_at": "2026-05-10T04:35:23.026688463Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

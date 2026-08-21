@@ -1,0 +1,208 @@
+{
+  "id": "019e1068-11e1-717a-9f0c-2a6d6736b62f",
+  "version": "019e1386-0f9f-7a45-852e-e2afe2c24b28",
+  "type": "data_protection",
+  "name": "W2010 - Cloud Storage Governance",
+  "description": "Intent: Warn-tier user dialog on Cloud Storage share / copy / move into the Unauthorized cloud-storage surface at sensitivity floor [2] — prompts the user before sensitive content is shared with external accounts or moved between non-corporate cloud tenants. Exclusions: excludes accounts in Cloud_Destination_Accounts_Authorized_[ends_with] and users in Users_Authorized_Internal_User_Suffixes_[ends_with]; populate the Authorized cloud-account list with every sanctioned tenant suffix so legitimate sharing doesn't warn users.",
+  "severity": "medium",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "cloud_storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b7cc5c3c4f198cdcb50e924a778e2dec08947943",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "cloud_storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "cloud_storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_shared_with",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "74670a138347aa8d5bdeb9ae1996c403e2bf849a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019de4e3-294e-7442-acab-8d3fabeb45e0"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "cloud_storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_shared_with",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019de4e3-294e-7442-acab-8d3fabeb45e0"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "7bba2414-ac96-4671-aea4-cdcb152c316c",
+    "create_incident": true,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": true,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: {{action}} to {{destination}} is unauthorized.",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": "Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "warn"
+    }
+  },
+  "dataset_ids": [
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b"
+  ],
+  "created_at": "2026-05-10T05:41:56.321093627Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T05:44:19.954245011Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    2
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+  "version": "019e10b9-03e3-7f20-a52e-b774fab34f2b",
+  "name": "D1031 - Web - Other - Internal Sharepoint",
+  "description": "Intent: Web / Internal Sharepoint activity — third Internal variant dedicated to sanctioned corporate SharePoint domains (carved out from the Other Web catch-all to keep internal collaboration low-noise). Exclusions: scoped to Websites_Authorized_Internal_Sharepoint_Domains_[is]; populate this list with your tenant hostnames (e.g., acme.sharepoint.com) so internal document work stays on the low-noise path and out of the Other Web surface.",
+  "sensitivity": "moderate",
+  "domain": "corporate",
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Other",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b71dfdf864b2c9e3d623b824f8d5c943887b7a5a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20cc-4af9-7805-8e72-0dadf2508a9b"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c20cc-4af9-7805-8e72-0dadf2508a9b"
+    ],
+    "exclusion_ids": []
+  },
+  "query_version": 1,
+  "created_at": "2026-05-10T07:09:59.595089908Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T07:10:21.126501233Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "policy_ids": [
+    "019cb4b6-e5d6-7b23-ba52-c31cfb8b3438",
+    "019cb4ba-2c72-7d9c-97f2-6e9e0762017c",
+    "019cb4bd-66b5-7655-bb1e-8347e5f65b34",
+    "019cb4c3-2907-79de-aaed-2bc040d39dfa",
+    "019cb4c6-e428-7a83-beaa-581b2389b9f1",
+    "019cb4cc-1074-75a9-9f9e-f365be57a637",
+    "019cb4cf-5cfe-7d40-979c-1a45050b574e",
+    "019cb4d3-da05-7c1d-8fdb-d05dd5593143",
+    "019cb99f-a1e5-7a34-a5f8-c9b8ad01c4be",
+    "019cb9a2-4cd2-768e-aa40-d37d4742636b",
+    "019cb9a3-12cf-73dd-acc4-718fefadc53d",
+    "019cb9a3-dfb0-792b-b5bc-74c03d927764",
+    "019cb9a5-4ebe-7f04-8cf6-3349f1078714",
+    "019cb9a5-fcc0-7d2f-985f-864deab15b0d",
+    "019cb9aa-a31f-730f-ac7e-8ed84b1962bf",
+    "019cb9ac-10b7-74af-bd28-ab2e2879baf0",
+    "019cb9ac-882c-7017-a44f-095f9f68bdb6",
+    "019cc17a-e99b-7308-ad97-a1f8b2fc3fff",
+    "019cf764-767d-7742-b192-887b50763bd2",
+    "019de4eb-a90d-7797-a6d6-281d3c4fd08d",
+    "019de500-db66-7744-bbd2-27f2ba264917",
+    "019de501-c17c-7345-bf2b-7835b56f5b07",
+    "019de506-149c-7222-8a99-4b1e70251e0e",
+    "019de507-91a9-7993-a139-5c575142a6ef",
+    "019de50c-52cd-7cd5-9a82-685bff3a7b9e",
+    "019e0fe1-e99c-7ae4-aefe-5d6c7ad3c1ea",
+    "019e0fe7-36e9-7d7a-af93-eb8cb66e79ab",
+    "019e0ff0-609d-7c89-a122-ddebf8457c3f",
+    "019e0ff2-57b9-7297-a171-5a137320947b",
+    "019e0ff5-1fd2-7554-be78-2cc67dd687e9",
+    "019e0ffb-db49-7c6d-8602-8f5e6864e9a2",
+    "019e1002-0f6a-74b2-ae4e-a775010cc9fe",
+    "019e1002-e0de-75e5-b8e3-30db33db21c6",
+    "019e1004-f086-7b53-a9aa-6016e1d47193",
+    "019e1006-327d-70d6-a669-fc4d311c1ade",
+    "019e1007-9b43-71eb-8e86-0251805a4e77",
+    "019e1008-a8fa-7454-98b6-9facca98cd5b",
+    "019e1009-926a-7df4-91e2-16aa1a867ce2",
+    "019e100a-954e-7d2d-9865-0b4252dd0fc5",
+    "019e1042-d7c7-7252-af38-1cd2d2d4ae5d",
+    "019e1055-0fe7-7b39-84db-45740feae33f",
+    "019e1057-8cb6-77d9-aa63-b0faa33d9814",
+    "019e1059-7bfd-76aa-95a2-b760bdda8ad9",
+    "019e105c-9ecd-7c29-93ee-b7e5f4075205",
+    "019e105e-79f3-7a65-b3a0-b8a6d16d6d07",
+    "019e105f-c499-741b-83ce-509008950ef0",
+    "019e1062-a5a1-793a-91ac-32537d0d37bb",
+    "019e1064-12bc-72bd-9f13-2f513edaf179",
+    "019e1065-c143-7851-8749-ebab7e901c8e",
+    "019e1068-11e1-717a-9f0c-2a6d6736b62f",
+    "019e106c-b050-7578-831f-94e2eacbef94",
+    "019e108d-6d36-7c65-9f09-28597a7e282e",
+    "019e108f-a1e4-7d34-a11c-d19e8707995d",
+    "019e1091-4b9e-7d94-ac6c-fb8ba00a37ae",
+    "019e1092-aebd-7eb5-a8e1-b662ae8f5cb5"
+  ]
+}

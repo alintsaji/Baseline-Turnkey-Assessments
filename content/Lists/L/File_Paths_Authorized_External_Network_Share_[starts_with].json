@@ -1,0 +1,14 @@
+{
+  "id": "019ca51e-6647-7654-bf25-761015ab33d2",
+  "name": "File Paths - Authorized - External Network Share [starts with]",
+  "description": "Intent: Authorized external network-share paths — populate with UNC path prefixes of sanctioned partner / vendor file shares (e.g., \\\\partner-acme.com\\shared, \\\\cloud-share.vendor.com\\). Drives the Authorized External direction on D8020 / M8020 and is negated alongside the Internal share list to define the Unauthorized share surface on D8000 / M8000 / W8000 / B8000. Exclusions: do not add contractor-managed shares without vetting; do not add paths to servers lacking access controls or encryption; prefer fully-qualified hostnames to avoid prefix collisions with internal paths.",
+  "type": "unmanaged",
+  "created_at": "2026-02-28T16:39:18.855409343Z",
+  "updated_at": "2026-02-28T16:39:18.855409343Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

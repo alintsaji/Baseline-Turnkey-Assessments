@@ -1,0 +1,14 @@
+{
+  "id": "019db8bb-3123-719d-ae5f-5d5b063411be",
+  "name": "Endpoint Apps - Unauthorized [is]",
+  "description": "Intent: Endpoint apps outside the Cyberhaven-curated categories that your org prohibits — populate with app-name patterns for unsanctioned applications not covered by the [CH] category lists. Drives the Unauthorized partition on M5000 endpoint-app activity and negated in W5000 / B5000 to define the customer-specific prohibited-app surface. Exclusions: do not duplicate apps already covered by a [CH]-curated category list; this is the customer extension lane for org-specific prohibited apps.",
+  "type": "unmanaged",
+  "created_at": "2026-04-23T05:06:08.803100918Z",
+  "updated_at": "2026-04-23T05:06:08.803100918Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

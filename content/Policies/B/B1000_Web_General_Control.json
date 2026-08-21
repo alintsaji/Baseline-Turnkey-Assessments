@@ -1,0 +1,251 @@
+{
+  "id": "019cb5ca-56e7-7d78-aed4-6db9889c5234",
+  "version": "019e1134-3fc5-760e-8ce9-7aa781aaa173",
+  "type": "data_protection",
+  "name": "B1000 - Web - General Control",
+  "description": "Intent: Block-tier hard enforcement on Web clipboard paste and upload into the Unauthorized Web surface (33 uncategorized business categories) at sensitivity floor [3,4] — shuts down sensitive data leaking through general-web exfil paths (analytics, banking, commerce, news, social, support, etc.). Exclusions: excludes domains in Websites_Authorized_Global_Domains_[is]; ships disabled by default — enable only after every sanctioned business destination is in the Authorized Global list and W1000 reviews are clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Analytics and BI",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Banking",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.CAD and Engineering",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Commercial & Industrial Equipment Supplier",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Content Delivery Networks",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Corporate Financial",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Corporate Messaging and Conferencing",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Sales and CRM",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Customer Support Tools",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Document Signing Services",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Governance, Risk and Compliance",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Government and Military",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Graphics, Design and CAD",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Health and Medicine",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Health Record and Clinical Trial Management",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.HR and Payroll",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.IT and Security Tools",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Job Boards and Recruiting",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Laboratory Management and Research Tools",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Legal and Law",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Logistics, Shipping and Printing",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.News and Media",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Professional Networks",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Project Management and Collaboration",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Research and Development",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Search Engines",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Shopping",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Social Media",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Software Downloads",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Travel and Entertainment",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Vendor Management",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.VPN and Proxies",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Cloud Computing and Tools",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Translation and Grammar Tools",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "763e34c9a6a0ff1fdae00434224cb388e78ce6ee",
+                "unit": "size_unit_unspecified",
+                "list_id": "019cf79c-5bf8-7ca2-afcd-898b8cf70ea6"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019cf79c-5bf8-7ca2-afcd-898b8cf70ea6"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "7665d888-2114-44dc-9a4d-f11d154d0e61",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": true,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T22:21:02.567879755Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T09:24:57.383907828Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "019c219d-301c-7c2c-b387-809d8ce2bc1e",
+  "name": "File Paths - Authorized - Internal Network Share [starts with]",
+  "description": "Intent: Authorized internal network-share paths — populate with UNC path prefixes of every corporate file server and SMB share (e.g., \\\\corp-fs01.acme.local\\Shared, \\\\dfs.acme.com\\Departments). Drives the Authorized Internal direction on D8010 / D8011 / M8010 and is paired with the External share list to define the unauthorized surface on D8000 / M8000 / W8000 / B8000. Top priority to populate — foundation for internal file-share governance. Exclusions: do not add external partner shares; do not add unmanaged or ad-hoc file servers; do not add paths lacking documented access control.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T03:47:55.548792065Z",
+  "updated_at": "2026-02-03T03:47:55.548792065Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

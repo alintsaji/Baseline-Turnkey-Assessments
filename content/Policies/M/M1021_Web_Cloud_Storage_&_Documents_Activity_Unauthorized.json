@@ -1,0 +1,234 @@
+{
+  "id": "019e0fe1-e99c-7ae4-aefe-5d6c7ad3c1ea",
+  "version": "019e12b1-4d21-7225-b89e-86e6f40ba1d4",
+  "type": "data_protection",
+  "name": "M1021 - Web - Cloud Storage & Documents Activity - Unauthorized",
+  "description": "Intent: Monitor-tier visibility on Web Cloud Storage and Documents activity — Unauthorized half, captures use of personal cloud accounts and non-sanctioned cloud platforms. Exclusions: negates Websites_Authorized_Cloud_Storage_&_Documents_Domains_[is] and Users_Authorized_Internal_User_Suffixes_[ends_with]; populate the Authorized cloud-domain list with every sanctioned vendor so this policy narrows to true shadow-cloud activity.",
+  "severity": "low",
+  "disabled": false,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b7cc5c3c4f198cdcb50e924a778e2dec08947943",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10",
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10",
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "aba77711-ddfa-43aa-a9eb-4e71ae7dc8e2",
+    "create_incident": false,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": false,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": false,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "none"
+    }
+  },
+  "dataset_ids": [
+    "496cf796-ea37-4db0-8f18-5b325e8988ae",
+    "9ffd9dfe-7194-4079-985b-f0f091231a5c",
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "eaaa78a8-dd81-4ff3-bccd-b5f0a28c9948",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "60192bad-af13-4c22-bd75-13c9bf2fa329",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "638b27e6-011d-4998-9733-0830ca296c08",
+    "99197f9c-6e2a-4be1-98e7-d35a8bae7871",
+    "e9b36cfe-dc7c-4e83-b5ee-3ea7b0233181",
+    "68493246-dec7-41c6-af66-7da86b083f8e",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "253c3874-dd16-426c-aaa2-661c9325aa47",
+    "0895a039-c110-4bd9-8aa9-418a1b0e7d4f",
+    "10e5b5c3-f925-418e-9828-1c9ecd52a7de",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "19cee699-1355-489d-af36-a5478527dfba",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "f4aa3065-690d-4e55-bf68-d79a02751856",
+    "932e51db-0944-4785-8551-586af0255f66",
+    "9dc0b274-e5b8-43df-bbf6-935df59a4b53",
+    "8bff23de-07a6-4e94-8706-f41e3151b2f5",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a",
+    "300b68e0-2284-42f8-822e-3710be30e865",
+    "86bb8dff-865f-4a66-b705-a7e162421743",
+    "c42169c1-012a-45cc-8496-780ac0515ed5",
+    "b4b1999e-6023-4c50-b3b9-bbe27486f47b"
+  ],
+  "created_at": "2026-05-10T03:15:24.188711195Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T07:23:21.301138951Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3,
+    2,
+    1,
+    0
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "019e1828-dbad-7198-8d78-20d1cdc018cc",
+  "name": "Users - Authorized - AI & Gen AI Tools - No CAU [contains]",
+  "description": "Intent: Authorized user identifiers for No-CAU GenAI surfaces — populate with substring patterns matching corporate-licensed user identifiers that appear on GenAI surfaces NOT enriched with Cloud App User identity (e.g., tenant-specific session prefixes, license-id fragments, partial corporate-account stems your enterprise GenAI provider exposes in URLs or headers). Substring-matched via [contains]. Currently unconsumed — staged as the user-side companion to the No-CAU GenAI domain list for a future segmentation that distinguishes sanctioned anonymous-style GenAI use from true unauthorized GenAI. Expected consumer surface is D1011 / M1011 / W1011. Exclusions: do not add corporate email suffixes (those belong in the Internal User Suffixes list and drive CAU-enriched paths); do not add personal identifiers — those should fall into Unauthorized so warn/block paths fire.",
+  "type": "unmanaged",
+  "created_at": "2026-05-11T17:49:51.405098857Z",
+  "updated_at": "2026-05-11T17:49:51.405098857Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "patrick.collier@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//Placeholder"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "019c20cc-4af9-7805-8e72-0dadf2508a9b",
+  "name": "Websites - Authorized - Internal Sharepoint Domains [is]",
+  "description": "Intent: Authorized internal SharePoint domains — populate with fully-qualified SharePoint tenant hosts (e.g., acme.sharepoint.com, acme.onmicrosoft.com) that host internal document libraries. Drives the Internal SharePoint carve-out on D1031 — distinct from the general cloud-storage surface so internal collaboration stays low-noise. Top priority if your org runs SharePoint Online. Exclusions: do not add external partner SharePoint sites; do not add personal OneDrive (covered by the general Cloud Storage authorized-domain list).",
+  "type": "unmanaged",
+  "created_at": "2026-02-02T23:59:45.401519677Z",
+  "updated_at": "2026-05-10T04:35:29.642497996Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

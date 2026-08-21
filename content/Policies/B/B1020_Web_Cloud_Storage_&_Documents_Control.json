@@ -1,0 +1,253 @@
+{
+  "id": "019cb5cd-39f5-7d4d-a80c-8a1f94642504",
+  "version": "019e1134-04d2-7493-9d09-22932247b750",
+  "type": "data_protection",
+  "name": "B1020 - Web - Cloud Storage & Documents Control",
+  "description": "Intent: Block-tier hard enforcement on Web clipboard paste and upload into the Unauthorized Cloud Storage and Documents surface at sensitivity floor [3,4] — shuts down sensitive data exfil into personal cloud accounts (Dropbox personal, Drive personal, ShareFile). Exclusions: excludes domains in Websites_Authorized_Cloud_Storage_&_Documents_Domains_[is] and users in Users_Authorized_Internal_User_Suffixes_[ends_with]; ships disabled — enable after Authorized list populated and W1021 is clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b7cc5c3c4f198cdcb50e924a778e2dec08947943",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Cloud Storage",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a09c7b5d6256073c63786892686a5931b1089eae",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10",
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10",
+      "019c20d7-f04b-71b0-8c1f-0ee7fd285f10"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "a9738f69-528f-4e8a-b260-ab3e24fd1657",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T22:24:11.765869301Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T09:24:42.288041722Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

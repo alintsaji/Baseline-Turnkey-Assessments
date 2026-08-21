@@ -1,0 +1,115 @@
+{
+  "id": "019cb4c8-f718-7b0c-bdf5-b19b06e4466e",
+  "version": "019e1301-2e57-7e1e-81c2-4256c0479ac9",
+  "type": "data_protection",
+  "name": "B5000 - Endpoint App Access Control",
+  "description": "Intent: Block-tier hard enforcement on Endpoint App access at sensitivity floor [3,4] — shuts down execution of explicitly-prohibited applications on the endpoint (the customer-extension Unauthorized app list). Exclusions: scoped to apps in Endpoint_Apps_Unauthorized_[is]; ships disabled by default — populate the Unauthorized app list with your org-specific prohibited applications before enabling, otherwise nothing is blocked. Coordinate enablement with W5000 reviews so the prohibition signal is well-understood before turning hard-block on. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "app_access",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "endpoint_apps",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "app_name",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "c44f58e0dcfca8454eeec9f3745e351f25759356",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8bb-3123-719d-ae5f-5d5b063411be"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019db8bb-3123-719d-ae5f-5d5b063411be"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "1321358f-cda6-4480-825f-e848f60b1870",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": false,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T17:39:55.288721656Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T17:48:25.028449683Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

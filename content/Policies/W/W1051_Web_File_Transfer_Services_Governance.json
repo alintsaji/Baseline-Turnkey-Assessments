@@ -1,0 +1,110 @@
+{
+  "id": "019e105c-9ecd-7c29-93ee-b7e5f4075205",
+  "version": "019e1386-0e04-7b6a-89d9-8bce6121f004",
+  "type": "data_protection",
+  "name": "W1051 - Web - File Transfer Services Governance",
+  "description": "Intent: Warn-tier user dialog on Web upload into the Unauthorized File Transfer Services surface at sensitivity floor [2] — prompts the user before uploading to non-sanctioned file-sharing services. Exclusions: excludes domains in Websites_Authorized_File_Transfer_Services_Domains_[is]; tune by adding approved file-transfer tools (WeTransfer Pro, Aspera, Tresorit, etc.) to the Authorized list so legitimate transfers go through without warnings.",
+  "severity": "medium",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.File Transfer Services",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "a4aaa99a58c94193edbb9c295a239e75ba855004",
+                "unit": "size_unit_unspecified",
+                "list_id": "019dd5ea-cf66-7e00-8532-6ac1a38f17df"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019dd5ea-cf66-7e00-8532-6ac1a38f17df"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "26cbeaa0-360a-4c9a-a38b-c248decb8392",
+    "create_incident": true,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": true,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: {{action}} to {{destination}} is unauthorized.",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": "Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "warn"
+    }
+  },
+  "dataset_ids": [
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b"
+  ],
+  "created_at": "2026-05-10T05:29:25.965794578Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T05:30:26.427275781Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    2
+  ]
+}

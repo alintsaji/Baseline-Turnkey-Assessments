@@ -1,0 +1,133 @@
+{
+  "id": "019cb4d5-3556-7ac7-ba27-97fa4b93bbff",
+  "version": "019e1301-db9d-7cb2-9e50-7e3333dc18e2",
+  "type": "data_protection",
+  "name": "B8000 - Shared Folders Control",
+  "description": "Intent: Block-tier hard enforcement on Shared Folder copy / move / rename_copy / download at sensitivity floor [3,4] — shuts down sensitive data moving out of corporate-internal sensitive shares (HR, finance, legal, M&A folders) or into unauthorized network shares. Exclusions: scoped to the Sensitive Internal Share dataset and Authorized share lists; ships disabled — enable after File_Paths_Authorized_Sensitive_Internal_Network_Share is populated and W8000 is clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "copy",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "rename_copy",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "download",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "move",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "share",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "path",
+            "operator": "list_starts_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "2f10f5fa09376a8433a01a3a3eb047dbfa0fb38a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c219d-301c-7c2c-b387-809d8ce2bc1e"
+              },
+              {
+                "value": "056382f2bade5b9275cb099b3172159631cd158a",
+                "unit": "size_unit_unspecified",
+                "list_id": "019ca51e-6647-7654-bf25-761015ab33d2"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": true,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c219d-301c-7c2c-b387-809d8ce2bc1e",
+      "019ca51e-6647-7654-bf25-761015ab33d2"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "3ef833c2-781d-4eb5-ac1e-24d0fde13b4c",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T17:53:17.654703815Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T17:49:09.376319810Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

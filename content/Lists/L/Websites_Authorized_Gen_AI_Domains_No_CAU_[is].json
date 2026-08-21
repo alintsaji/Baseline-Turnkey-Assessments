@@ -1,0 +1,14 @@
+{
+  "id": "019c21c2-5e0b-7645-b6ba-7dabf4c50ed9",
+  "name": "Websites - Authorized - Gen AI Domains - No CAU [is]",
+  "description": "Intent: Authorized GenAI domains where Cloud App User identity is NOT captured by the agent — populate with sanctioned GenAI surfaces that don't expose corporate identity (e.g., anonymous LLM tools, free-tier endpoints used under explicit corporate policy). Currently unconsumed — staged for future GenAI segmentation distinguishing CAU vs no-CAU authorized use; expected consumer surface is D1011 / M1011 / W1011. Exclusions: do not add domains that require corporate auth (those belong in the CAU sibling list); do not populate unless you actively distinguish no-auth GenAI from true unauthorized.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T04:28:32.139407561Z",
+  "updated_at": "2026-05-10T03:13:30.167397377Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

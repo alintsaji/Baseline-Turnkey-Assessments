@@ -1,0 +1,14 @@
+{
+  "id": "019cf79c-5bf8-7ca2-afcd-898b8cf70ea6",
+  "name": "Websites - Authorized - Global Domains [is]",
+  "description": "Intent: Authorized global corporate domains — populate with sanctioned corporate websites and SaaS not covered by channel-specific lists (e.g., acme.com intranet, support.acme.com, marketing.acme.com, acquired-co-wiki.com). Drives the Authorized split on W1000 / B1000 (general Web governance catch-all). Lower priority — populate during W1000 / B1000 rollout to avoid blanket warns/blocks on corporate sites. Exclusions: do not add external partner sites unless they are corporate-owned; do not add untrusted public sites; channel-specific Authorized lists (cloud, GenAI, etc.) take precedence and should be populated first.",
+  "type": "unmanaged",
+  "created_at": "2026-03-16T17:05:45.464822227Z",
+  "updated_at": "2026-03-16T17:05:45.464822227Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//google.com"
+  ]
+}

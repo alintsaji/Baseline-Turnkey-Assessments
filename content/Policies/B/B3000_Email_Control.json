@@ -1,0 +1,129 @@
+{
+  "id": "019cb4be-4802-73f5-839c-b3d1c91cc9dc",
+  "version": "019e1300-72db-74c1-8ebd-ade3009d65f8",
+  "type": "data_protection",
+  "name": "B3000 - Email Control",
+  "description": "Intent: Block-tier hard enforcement on Email send / attachment_send / sent_email at sensitivity floor [3,4] — shuts down sensitive content from leaving via outbound mail to personal or non-vetted external recipients. Exclusions: excludes recipients in Users_Authorized_Internal_User_Suffixes_[ends_with] and Users_Authorized_External_Email_Suffixes_[ends_with]; ships disabled — enable after both Authorized email lists are populated and W3000 reviews are clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "attachment_send",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "send",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "sent_email",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "mail",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "email_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "850f842593b1f9f6a5a6d8173efee9082fcb090b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              },
+              {
+                "value": "f56f31ac7e2f325b927151ca1289aac9ee13c103",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d6-b735-71be-a5fe-1965412d7357"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019c20d6-b735-71be-a5fe-1965412d7357"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "17c6fea9-fe74-49d3-ab87-e53b0af05f6c",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T17:28:15.106256140Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T17:47:37.016277020Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

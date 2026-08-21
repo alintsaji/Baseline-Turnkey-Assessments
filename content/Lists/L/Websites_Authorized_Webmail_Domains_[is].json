@@ -1,0 +1,14 @@
+{
+  "id": "019dd5eb-bc07-7237-a924-44202c5689d4",
+  "name": "Websites - Authorized - Webmail Domains [is]",
+  "description": "Intent: Authorized webmail domains — populate with sanctioned corporate webmail surfaces (e.g., mail.google.com for a Gmail Workspace tenant, outlook.office.com for M365, internal-mail.acme.com). Drives the Authorized split on D1080 / M1070 (Internal webmail activity) and is negated to define the Unauthorized webmail surface on D1081 / M1071 / W1071 / B1070. Exclusions: do not add free Gmail / Outlook personal accounts; if you allow specific personal addresses under corporate license, scope by user-suffix instead.",
+  "type": "unmanaged",
+  "created_at": "2026-04-28T21:08:09.351141051Z",
+  "updated_at": "2026-05-10T04:36:04.039843930Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

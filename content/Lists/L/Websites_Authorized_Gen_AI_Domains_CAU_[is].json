@@ -1,0 +1,16 @@
+{
+  "id": "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+  "name": "Websites - Authorized - Gen AI Domains - CAU [is]",
+  "description": "Intent: Authorized GenAI domains where Cloud App User (CAU) identity is captured by the agent — populate with sanctioned GenAI services your users are licensed for (e.g., chatgpt.com, claude.ai, m365.cloud.microsoft, gemini.google.com, github.com/copilot). Drives the Authorized split on D1010 / M1010 and is negated to define the Unauthorized GenAI surface on D1011 / M1011 / W1011 / B1010 / B1030. Top priority — foundational for GenAI risk segmentation. Exclusions: do not add domains that lack CAU enrichment (use the No-CAU sibling list); do not add personal-account GenAI surfaces — those should fall into Unauthorized so warn/block paths fire.",
+  "type": "unmanaged",
+  "created_at": "2026-04-23T05:05:17.538469360Z",
+  "updated_at": "2026-05-10T03:13:22.557810273Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 3,
+  "items": [
+    "//chatgpt.com",
+    "//m365.cloud.microsoft",
+    "//claude.ai"
+  ]
+}

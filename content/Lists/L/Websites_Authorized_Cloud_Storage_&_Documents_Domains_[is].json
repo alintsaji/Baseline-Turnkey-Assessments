@@ -1,0 +1,14 @@
+{
+  "id": "019c20d7-f04b-71b0-8c1f-0ee7fd285f10",
+  "name": "Websites - Authorized - Cloud Storage & Documents Domains [is]",
+  "description": "Intent: Authorized cloud storage and document-collaboration domains — populate with sanctioned cloud platforms (e.g., box.com, dropbox.com, drive.google.com, sharepoint.com, onedrive.live.com). Drives the Authorized split on D1020 / M1020 (Internal cloud storage / docs) and is negated to define the Unauthorized surface on D1021 / M1021 / W1021 / B1020. Top priority to populate — second-most-used segmentation list in the v0 system. Exclusions: do not add personal-tier domains unless your org has corporate licensing; do not add file-sync services without security review.",
+  "type": "unmanaged",
+  "created_at": "2026-02-03T00:12:28.619105126Z",
+  "updated_at": "2026-03-06T04:01:23.713492768Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

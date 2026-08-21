@@ -1,0 +1,110 @@
+{
+  "id": "019e1091-4b9e-7d94-ac6c-fb8ba00a37ae",
+  "version": "019e1386-10c0-73b1-994c-576975cc3796",
+  "type": "data_protection",
+  "name": "W7010 - Removable Media Governance",
+  "description": "Intent: Warn-tier user dialog on Removable Media copy / move into the Unauthorized USB / removable-storage surface at sensitivity floor [2] — prompts the user before sensitive content is written to unsanctioned external media. Exclusions: excludes devices in USB_Authorized_Device_IDs_[is]; tune by populating with vendor/product IDs of every corporate-issued encrypted USB so legitimate copies don't warn users.",
+  "severity": "medium",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "removable_media",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "removable_device_usb_id",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "4a4255785dff9bd070f1309f6f8b4e34e3c59238",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c219c-d224-766f-9b9c-bff44f0b0af9"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c219c-d224-766f-9b9c-bff44f0b0af9"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "335b78d5-8da3-4bc1-86f1-5c420950a5e3",
+    "create_incident": true,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": true,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: {{action}} to {{destination}} is unauthorized.",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": "Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "warn"
+    }
+  },
+  "dataset_ids": [
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b"
+  ],
+  "created_at": "2026-05-10T06:26:58.078887349Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T06:27:42.906879433Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    2
+  ]
+}

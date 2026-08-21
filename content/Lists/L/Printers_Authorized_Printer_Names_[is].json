@@ -1,0 +1,15 @@
+{
+  "id": "019cc152-3b78-7be9-8aea-4983343f97b5",
+  "name": "Printers - Authorized - Printer Names [is]",
+  "description": "Intent: Authorized printer names — populate with friendly device names of every corporate-managed printer (e.g., HQ-FloorA-MFP-01, Boston-SecurePrint-Kiosk, Lab-LaserJet-3). Drives the Authorized Printer Activity split on M6000 and is negated in M6010 / W6010 / B6000 to define unauthorized printing. Lower priority unless your org operates a managed print fleet. Exclusions: do not add personal home-office printers or ad-hoc network printers; do not add legacy device names of decommissioned printers — keep the list active.",
+  "type": "unmanaged",
+  "created_at": "2026-03-06T04:05:17.816776026Z",
+  "updated_at": "2026-03-12T22:22:10.675023548Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 2,
+  "items": [
+    "//Microsoft Print to PDF",
+    "//Adobe PDF"
+  ]
+}

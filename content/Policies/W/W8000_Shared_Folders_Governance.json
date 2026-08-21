@@ -1,0 +1,116 @@
+{
+  "id": "019e1092-aebd-7eb5-a8e1-b662ae8f5cb5",
+  "version": "019e1386-110b-7d7c-b5fc-a8a185cb12e0",
+  "type": "data_protection",
+  "name": "W8000 - Shared Folders Governance",
+  "description": "Intent: Warn-tier user dialog on Shared Folder copy / move / download into the Unauthorized shared-folder surface at sensitivity floor [2] — prompts the user before sensitive content is moved into non-sanctioned network shares. Exclusions: excludes paths in File_Paths_Authorized_Internal_Network_Share_[starts_with] and File_Paths_Authorized_External_Network_Share_[starts_with]; tune both Authorized share lists so legitimate file-server work doesn't warn users.",
+  "severity": "medium",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "share",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "path",
+            "operator": "list_starts_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "75309be42305f47a5c45266f3910ccefb907f5b2",
+                "unit": "size_unit_unspecified",
+                "list_id": "019ca51e-6647-7654-bf25-761015ab33d2"
+              },
+              {
+                "value": "b2c07bb07177b6f89314972b0b0d7582a380b934",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c219d-301c-7c2c-b387-809d8ce2bc1e"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019ca51e-6647-7654-bf25-761015ab33d2",
+      "019c219d-301c-7c2c-b387-809d8ce2bc1e"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "ca67429e-7eb5-4d25-8a29-de7cae8cd090",
+    "create_incident": true,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": true,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: {{action}} to {{destination}} is unauthorized.",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": "Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "warn"
+    }
+  },
+  "dataset_ids": [
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b"
+  ],
+  "created_at": "2026-05-10T06:28:28.989961205Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T06:30:04.912223739Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    2
+  ]
+}

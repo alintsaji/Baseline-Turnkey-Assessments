@@ -1,0 +1,136 @@
+{
+  "id": "019e1006-327d-70d6-a669-fc4d311c1ade",
+  "version": "019e12b1-4a3c-7155-88ff-f710cbba060f",
+  "type": "data_protection",
+  "name": "M5030 - Endpoint App Activity - GenAI",
+  "description": "Intent: Monitor-tier low-severity visibility on Endpoint App Activity — Generative AI category (ChatGPT desktop, Claude native, Copilot extensions, Cursor, local LLM runners). Tracks AI adoption and content flow at the endpoint layer (web GenAI is covered separately). Exclusions: scoped by [CH]_Endpoint_Apps_Generative_AI_[is] — Cyberhaven-curated baseline; extend with newer GenAI clients as they emerge, do not remove curated entries.",
+  "severity": "low",
+  "disabled": false,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "endpoint_apps",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "app_name",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "800adc865b545a4662b8ded934c10a0aa4d53ee8",
+                "unit": "size_unit_unspecified",
+                "list_id": "019de4e5-a74e-7849-9887-b37dfa1737cd"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019de4e5-a74e-7849-9887-b37dfa1737cd"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "89974538-6350-4ba0-8472-f4b3017d6176",
+    "create_incident": false,
+    "disable_ai_incidents": true,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": false,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": false,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Blocking: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "none"
+    }
+  },
+  "dataset_ids": [
+    "58725aef-d681-44b1-90f0-3490dc330a9c",
+    "60192bad-af13-4c22-bd75-13c9bf2fa329",
+    "68493246-dec7-41c6-af66-7da86b083f8e",
+    "287de32c-c418-4d32-a9ba-cec16a1f461a",
+    "638b27e6-011d-4998-9733-0830ca296c08",
+    "da4d2cde-3025-4425-8f47-a01ccbd3c05f",
+    "e9b36cfe-dc7c-4e83-b5ee-3ea7b0233181",
+    "fd84f7bd-2526-435d-a091-c5fee1fcc3f7",
+    "99197f9c-6e2a-4be1-98e7-d35a8bae7871",
+    "eaaa78a8-dd81-4ff3-bccd-b5f0a28c9948",
+    "496cf796-ea37-4db0-8f18-5b325e8988ae",
+    "9ffd9dfe-7194-4079-985b-f0f091231a5c",
+    "253c3874-dd16-426c-aaa2-661c9325aa47",
+    "0895a039-c110-4bd9-8aa9-418a1b0e7d4f",
+    "10e5b5c3-f925-418e-9828-1c9ecd52a7de",
+    "e6d9108e-66f5-4c1a-ace2-1e2f23e9b976",
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "686aced8-7794-4808-ade7-0e718cbe8027",
+    "50fdbd4c-6ee1-47fc-b291-278247a64c8b",
+    "34acbe46-1365-4c10-90ff-d93e67fc56f6",
+    "ffc9f4e7-3ffa-4631-97b1-033319924d15",
+    "5450f54c-fd43-43c9-a23e-c48780694dd1",
+    "6338deb3-aa53-4191-8524-85554bb2ab02",
+    "19cee699-1355-489d-af36-a5478527dfba",
+    "05d1970a-3ad4-44ce-bbf2-a803e623e6c7",
+    "f4aa3065-690d-4e55-bf68-d79a02751856",
+    "932e51db-0944-4785-8551-586af0255f66",
+    "9dc0b274-e5b8-43df-bbf6-935df59a4b53",
+    "8bff23de-07a6-4e94-8706-f41e3151b2f5",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a",
+    "300b68e0-2284-42f8-822e-3710be30e865",
+    "86bb8dff-865f-4a66-b705-a7e162421743",
+    "c42169c1-012a-45cc-8496-780ac0515ed5",
+    "b4b1999e-6023-4c50-b3b9-bbe27486f47b"
+  ],
+  "created_at": "2026-05-10T03:55:02.141052469Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T07:23:21.301138951Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

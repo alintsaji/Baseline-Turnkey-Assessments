@@ -1,0 +1,14 @@
+{
+  "id": "019e10ba-df83-78c7-be0d-b19a9a9bd182",
+  "name": "Websites - Authorized - IT and Security Domains [is]",
+  "description": "Intent: Authorized IT and Security tooling domains — populate with sanctioned IT-ops and security platforms (e.g., okta.com / acme.okta.com, crowdstrike.com, jamfcloud.com, jira.acme.com, sumologic.com). Drives the Authorized split on D1060 (Internal IT/Security) and is negated to define the Unauthorized IT/Security surface on D1061. Exclusions: do not add unapproved vendor tools; do not add public vulnerability databases without justification; restrict to your active security stack.",
+  "type": "unmanaged",
+  "created_at": "2026-05-10T07:12:22.915569861Z",
+  "updated_at": "2026-05-10T07:12:22.915569861Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

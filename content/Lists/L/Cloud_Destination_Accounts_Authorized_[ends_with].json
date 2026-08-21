@@ -1,0 +1,14 @@
+{
+  "id": "019de4e3-294e-7442-acab-8d3fabeb45e0",
+  "name": "Cloud Destination Accounts - Authorized [ends with]",
+  "description": "Intent: Authorized cloud destination accounts — populate with tenant-suffix patterns identifying sanctioned cloud-storage accounts (e.g., @acme.com.box.com, @acme.onedrive.com, acme.sharepoint.com, acme-okta). Drives the Authorized split on D2000 / M2000 (Internal cloud storage activity, low-noise visibility) and is negated to partition the Unauthorized cloud surface on D2010 / M2010 / W2010 / B2000. Top priority to populate — this is the primary discriminator between sanctioned and shadow cloud tenants. Exclusions: do not add free/personal cloud accounts (gmail.com, personal OneDrive) unless your org licenses them as corporate identities; do not add competing cloud vendors that aren't actually sanctioned.",
+  "type": "unmanaged",
+  "created_at": "2026-05-01T18:53:05.742275613Z",
+  "updated_at": "2026-05-01T18:53:05.742275613Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "patrick.collier@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//"
+  ]
+}

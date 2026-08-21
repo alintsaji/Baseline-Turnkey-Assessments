@@ -1,0 +1,538 @@
+{
+  "metadata": {
+    "source": "Enforcement Matrix.xlsx - Matrix.csv",
+    "imported": "2026-05-10",
+    "description": "Per-action enforcement capability matrix. Maps each Policy Engine Action Name to its canonical Cyberhaven event_type, the sensor that emits it, and the per-OS warn/block support level. Cell values are preserved verbatim (may be 'Y', 'N', 'Partial', 'Unknown', or longer descriptive strings with caveats). Use this matrix to validate that B-tier policy intent maps to an actually-blockable action on the target OS, and to look up the right event_type when writing or auditing policy rules."
+  },
+  "actions": [
+    {
+      "action": "Attached file",
+      "event_type": "attachment_add",
+      "sensor_type": "Endpoint Sensor Outlook",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Medium"
+    },
+    {
+      "action": "Created file",
+      "event_type": "create",
+      "sensor_type": "Endpoint Sensor Application",
+      "explanation": "Creating a file within any app",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y; Windows and macOS typically treat saving a new document as a \"file create.\" On Linux, some editors implement \"Save\" as a move or rename. The Endpoint Sensor only records \"true creates\" (new files) under this category; operations using move/rename semantics follow the Move row rules.",
+          "block": "Y; Linux Sensor does not support blocking on RHEL 8. Windows and macOS typically treat saving a new document as a \"file create.\" On Linux, some editors implement \"Save\" as a move or rename. The Endpoint Sensor only records \"true creates\" (new files) under this category; operations using move/rename semantics follow the Move row rules."
+        }
+      },
+      "caveats": "Linux Sensor does not support blocking on RHEL 8. Windows and macOS typically treat saving a new document as a \"file create.\" On Linux, some editors implement \"Save\" as a move or rename. The Endpoint Sensor only records \"true creates\" (new files) under this category; operations using move/rename semantics follow the Move row rules.",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Deleted",
+      "event_type": "delete",
+      "sensor_type": "Browser Extension Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Edited file",
+      "event_type": "edit",
+      "sensor_type": "Endpoint Sensor Office Doc Tracker",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Extracted file",
+      "event_type": "unzip",
+      "sensor_type": "Endpoint Sensor Explorer; Endpoint Sensor Finder",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Received file",
+      "event_type": "recieved_email",
+      "sensor_type": "Cloud Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Renamed file",
+      "event_type": "rename",
+      "sensor_type": "Browser Extension Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Used to enrich lineage, no enforcement value.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Saved email attachment",
+      "event_type": "attachment_save",
+      "sensor_type": "Endpoint Sensor Outlook",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "No inline block documented for attachment_save.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Sent [File]",
+      "event_type": "sent_email",
+      "sensor_type": "Endpoint Sensor Outlook; Cloud Sensor",
+      "explanation": "End user sent an email with an attachement (i.e. Sent File)",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "Y"
+        }
+      },
+      "caveats": "Sent is main email blocking surface for Gmail/OWA. Untested for enforcement on MacOS, Linux.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Pushed file",
+      "event_type": "pushed",
+      "sensor_type": "Endpoint Sensor Git",
+      "explanation": "End user 'pushed' a file to github/bitbucket",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "Inline blocking explicitly documented for EndpointSensorMitm upload; other “push” semantics less clear.",
+      "documentation_source": "Undocumented",
+      "confidence": "Low"
+    },
+    {
+      "action": "Printed",
+      "event_type": "sent_to_printer",
+      "sensor_type": "Endpoint Sensor Application",
+      "explanation": "User printed a file using either a physical printer or via 'print as' funtion within popular document handling applications.",
+      "support": {
+        "windows": {
+          "warn": "Y; Limited to Microsoft Word, Microsoft Excel, and supported browsers.",
+          "block": "Y; Limited to Microsoft Word, Microsoft Excel, and supported browsers."
+        },
+        "macos": {
+          "warn": "Y; The macOS Endpoint Sensor records print operations as a file open event against the printer process.",
+          "block": "Y; The macOS Endpoint Sensor records print operations as a file open event against the printer process."
+        },
+        "linux": {
+          "warn": "N",
+          "block": "N"
+        }
+      },
+      "caveats": "No content inspection and no CI-based inline blocking for sent_to_printer. Blocking is available only on supported platforms (Windows) and relies on fail-close/metadata (printer name, app, prior scans), not on synchronous CI of the printed document. macOS remains monitor-only for sent_to_printer events, blocking is supported for 'file open' events spawned by the printer process. Excel ‘Export/Save as PDF’ may surface as sent_to_printer and be blocked under print policies; see DDR-13612 and related Slack threads. Primary policy tuning lever is 'printer name', as 'driver' and 'job name' fields are not exposed to policies.",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Fetched file",
+      "event_type": "fetch",
+      "sensor_type": "Endpoint Sensor Git",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N; Linux Sensor does not support blocking on RHEL 8."
+        }
+      },
+      "caveats": "Blocking capability assumes Fetched File is handled similarly to 'Downloaded File' by the sensor, though they do appear to be two discreet branches of the Endpoint Sensor. Marked as monitor only for now.",
+      "documentation_source": "Undocumented",
+      "confidence": "Low"
+    },
+    {
+      "action": "Moved file",
+      "event_type": "move",
+      "sensor_type": "Endpoint Sensor Explorer; Endpoint Sensor Finder",
+      "explanation": "User moves files or folders between locations on the endpoint (Explorer/Finder, cmd/PowerShell, command‑line tools, other apps). Includes both file‑level and folder‑level moves.",
+      "support": {
+        "windows": {
+          "warn": "Y; all traced file and folder moves (local↔local, local↔USB, local↔Windows network share, local↔cloud‑sync, USB↔USB, share↔share) can generate warn incidents.",
+          "block": "Partial; Yes in general, but blocking is not supported under the following conditions: (1) Moving folders within the same local drive, (2) Moving folders within the same USB, (3) Moving folders within the same network share, (4) Moving folders from a local drive to cloud sync folders on  the same drive, (5) Moving folders from a local drive to cloud sync backup locations (i.e. Documents, Desktop, etc.). The reasons for this are basically: When folders are moved within the same drive, USB, or network share, there is no risk of data leaks, except in the case of cloud sync folders. Moving folders within the same location is very fast (usually less than 1 second) and adding file checks could slow down the process significantly. --> file moves are blockable wherever Copy File is blockable; folder moves are blockable only for cross‑boundary moves (e.g., local drive↔different local drive, local↔USB, local↔network share, local↔cloud‑sync, USB↔USB, share↔share). Folder moves within the same drive/USB/share and moves into same‑drive cloud‑sync/backup folders (e.g., C:\\Users*\\OneDrive, Documents, Desktop) are monitor/warn‑only by design (performance + low exfil‑risk)."
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N; File moves are blockable similarly to Windows; folder‑move blocking is technically supported for the same cross‑boundary patterns as Windows but is disabled by default from version 24.09 due to performance impact (footnote 9). Unless explicitly re‑enabled per tenant, macOS folder moves should be treated as Warn/Monitor‑only, including cross‑boundary folder moves. Within‑same‑location folder moves are monitor‑only either way."
+        },
+        "linux": {
+          "warn": "Files: Yes; Folders: No – for Linux, file moves are covered by the same “copy/move files” rows as Copy File (Explorer/Finder, command‑line apps, other apps) and can raise warn incidents. Folder Operations table shows Tracing = No for all folder moves on Linux (all Folder Operations rows end in “No No” for Linux), so folder moves are not even visible to the sensor.",
+          "block": "Files: Yes (with CI‑only and RHEL‑8 caveats); Folders: No – for Linux, file‑move blocking is supported wherever the “copy/move files” rows show block=Yes¹⁴ (Explorer/Finder, command‑line apps, other apps) and for “Transferring files to removable media using Explorer or Finder”. There is no block for moving files to Recycle Bin/Trash, no block support on RHEL 8, and no block at all for folder moves, because Folder Operations list Tracing = No / Blocking = No for Linux. Net: Moved File on Linux enforces only file‑moves, not any folder‑moves."
+        }
+      },
+      "caveats": "This action combines file‑move and folder‑move semantics. On Windows, both are visible; file moves are blockable and folder moves are blockable only when crossing real boundaries (not within‑same‑location moves). On macOS, file moves are blockable; folder moves are technically blockable but disabled by default from 24.09 (footnote 9). On Linux, only file moves are traced and blockable (with CI‑only and RHEL‑8 caveats); folder moves are neither traced nor blocked (all Folder Operations rows for Linux are No/No). Thus, Moved File = Partial on all OSes, but for different reasons.",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "Medium"
+    },
+    {
+      "action": "Copied file",
+      "event_type": "copy",
+      "sensor_type": "Endpoint Sensor Explorer; Endpoint Sensor Finder",
+      "explanation": "User copies files between locations on the endpoint (Explorer/Finder, cmd/PowerShell, command‑line tools, other apps). Clipboard copy/paste is modeled separately.",
+      "support": {
+        "windows": {
+          "warn": "Y; tracing for file copies via Explorer, cmd/PowerShell, FTP clients, and other apps is supported, so warn incidents can be raised for any traced file‑copy, including to USB, Windows network shares, cloud‑sync folders, and FTP destinations.",
+          "block": "Yes; Can block file copies via Explorer/CLI/other apps between local↔local drives, local↔USB, local↔Windows network shares, and local↔cloud‑sync folders; also for FTP transfers where the client is covered. No block for MTP/PTP device transfers; known USB gaps (e.g., Outlook drag‑and‑drop to USB, renaming files on USB) remain detect‑only. Blocking is not supported under the following conditions: (1) Moving folders within the same local drive, (2) Moving folders within the same USB, (3) Moving folders within the same network share, (4) Moving folders from a local drive to cloud sync folders on  the same drive, (5) Moving folders from a local drive to cloud sync backup locations (i.e. Documents, Desktop, etc.). The reasons for this are basically: When folders are moved within the same drive, USB, or network share, there is no risk of data leaks, except in the case of cloud sync folders. Moving folders within the same location is very fast (usually less than 1 second) and adding file checks could slow down the process significantly."
+        },
+        "macos": {
+          "warn": "Y; same as Windows in spirit: traced file copies via Finder, CLI, and other apps (including to USB, network shares, and cloud‑sync folders) can always generate warn incidents.",
+          "block": "Y; can block file copies via Finder/CLI/other apps between local drives, USB, network shares, and cloud‑sync drives. Same USB limitations as Windows (e.g., some Outlook→USB and rename flows not blockable). No block for MTP/PTP device transfers."
+        },
+        "linux": {
+          "warn": "Yes – tracing is explicitly Yes for file copies in “Using Explorer or Finder”, “Using command line apps”, and “Using any other apps” rows, and for “Transferring files to removable media using Explorer or Finder”, so warn incidents are allowed for those file‑copy flows. No tracing for folder moves (handled under Folder Operations).",
+          "block": "Partial (Files Only); on non‑RHEL‑8 Linux, file‑copy blocking is supported for file‑manager/CLI/FTP flows via Content Inspection only; Tags do not drive enforcement. No block on RHEL 8; no block for Recycle Bin/Trash moves; no block for MTP/PTP device transfers; some app‑specific gaps may exist."
+        }
+      },
+      "caveats": "Files only. Folder behavior is modeled under Moved File and, on Linux, Folder Operations have Tracing = No / Blocking = No across the board. For Linux, Copy File Block support exists only where the table shows block=Yes (Explorer/Finder, CLI, other apps, removable‑media transfers), with CI‑only enforcement and no blocking on RHEL 8. USB coverage has known gaps; MTP/PTP device transfers are trace‑only or unsupported.",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "Medium"
+    },
+    {
+      "action": "Opened file",
+      "event_type": "app_access",
+      "sensor_type": "Endpoint Sensor Explorer; Endpoint Sensor Finder",
+      "explanation": "Opening (i.e. accessing) existing files within any endpoint app",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "Partial; Linux Sensor does not support blocking on RHEL 8."
+        }
+      },
+      "caveats": "",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Copy/Pasted",
+      "event_type": "clipboard_copypaste",
+      "sensor_type": "Endpoint Sensor Clipboard",
+      "explanation": "User copy/pasted content via their OS UI",
+      "support": {
+        "windows": {
+          "warn": "Y; Review the full list of supported paste actions in the Release Notes. Tracing copy and paste actions on Windows and macOS from any app has the following additional limitations: (1) When sensitive content is pasted into a new or existing file that has not yet been saved, the copy/paste action is traced and recorded. However, content inspection will not include the pasted sensitive data until the file is saved. This is because content inspection is performed on the file on disk, not in memory. (2) Events generated from copy/paste actions traced for new, unsaved files will not contain file name or path information. Once the file is saved, actions performed on it are treated as separate events, and the data lineage is not linked to the initial copy/paste action. (3) Some applications may force-disable the ability to track copy and paste actions, preventing the sensor from tracing these actions. (4) Tracing in non-browser applications is reliably supported only for applications using the English language.",
+          "block": "Y; Only supported for copy/paste actions to web apps on supported browsers."
+        },
+        "macos": {
+          "warn": "Y; no trace for copy/paste actions into Outlook. Tracing copy and paste actions on Windows and macOS from any app has the following additional limitations: (1) When sensitive content is pasted into a new or existing file that has not yet been saved, the copy/paste action is traced and recorded. However, content inspection will not include the pasted sensitive data until the file is saved. This is because content inspection is performed on the file on disk, not in memory. (2) Events generated from copy/paste actions traced for new, unsaved files will not contain file name or path information. Once the file is saved, actions performed on it are treated as separate events, and the data lineage is not linked to the initial copy/paste action. (3) Some applications may force-disable the ability to track copy and paste actions, preventing the sensor from tracing these actions. (4) Tracing in non-browser applications is reliably supported only for applications using the English language. (4) Event tracing is not supported between Incognito and non-Incognito windows of the same browser session. However, tracing functions correctly between Incognito windows within the same session and between Incognito windows and other processes, even those in separate browser sessions.",
+          "block": "Y; only for copy/paste actions to web-based applications on supported browsers (i.e. if you are using a browser to interface, it is blockable on supported browsers). Event tracing is not supported between Incognito and non-Incognito windows of the same browser session. However, tracing functions correctly between Incognito windows within the same session and between Incognito windows and other processes, even those in separate browser sessions."
+        },
+        "linux": {
+          "warn": "N",
+          "block": "N"
+        }
+      },
+      "caveats": "",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Compressed file",
+      "event_type": "zip",
+      "sensor_type": "Endpoint Sensor Explorer",
+      "explanation": "Archiving with Explorer, Finder, or 7Zip",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "Y; for 7Zip specifically, user action is recorded but not linked to the original document.",
+          "block": "Y; for 7Zip specifically, user action is recorded but not linked to the original document."
+        },
+        "linux": {
+          "warn": "N",
+          "block": "N"
+        }
+      },
+      "caveats": "No coverage for Linux, MacOS has a lineage gap around 7Zip",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Cloned repository",
+      "event_type": "clone",
+      "sensor_type": "Cloud Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "N"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "N"
+        }
+      },
+      "caveats": "",
+      "documentation_source": "Undocumented",
+      "confidence": "Low"
+    },
+    {
+      "action": "Uploaded file",
+      "event_type": "upload",
+      "sensor_type": "Endpoint Sensor Browser",
+      "explanation": "Uploading to supported browsers with browser extension installed",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "Y; Linux Sensor does not support blocking on RHEL 8."
+        }
+      },
+      "caveats": "Yes applies only to supported browers: https://docs.cyberhaven.io/latest/docs/browser-extension-details - Recommend client use Chrome if stable enforcement is required (Chrome is the only browser supported across every major OS type).",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    },
+    {
+      "action": "Shared file",
+      "event_type": "share",
+      "sensor_type": "Browser Extension Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "N",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "N; SaaS share surfaces not currently blockable outside Windows.",
+          "block": "N; SaaS share surfaces not currently blockable outside Windows."
+        },
+        "linux": {
+          "warn": "N; SaaS share surfaces not currently blockable outside Windows.",
+          "block": "N; SaaS share surfaces not currently blockable outside Windows."
+        }
+      },
+      "caveats": "User warnings not supported for SaaS actions; enforcement API-side and app-dependent.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Shared page",
+      "event_type": "share_page",
+      "sensor_type": "Browser Extension Sensor",
+      "explanation": "",
+      "support": {
+        "windows": {
+          "warn": "N",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "N; SaaS share surfaces not currently blockable outside Windows.",
+          "block": "N; SaaS share surfaces not currently blockable outside Windows."
+        },
+        "linux": {
+          "warn": "N; SaaS share surfaces not currently blockable outside Windows.",
+          "block": "N; SaaS share surfaces not currently blockable outside Windows."
+        }
+      },
+      "caveats": "User warnings not supported for SaaS actions; enforcement API-side and app-dependent.",
+      "documentation_source": "Inferred",
+      "confidence": "Low"
+    },
+    {
+      "action": "Exported file",
+      "event_type": "save_as",
+      "sensor_type": "Endpoint Sensor Microsoft Excel; Endpoint Sensor Microsoft PowerPoint; Endpoint Sensor Microsoft Word",
+      "explanation": "User saves or exports a document to a new file in Microsoft Office (for example, “Save As…”, “Export…” to another format such as PDF or a different Office type).",
+      "support": {
+        "windows": {
+          "warn": "Y; Endpoint Sensor Coverage lists “Saving and exporting files in Microsoft Office” with tracing Yes¹ for Windows, so save/export operations can generate warn incidents when policy matches.",
+          "block": "Y; the same row shows blocking Yes¹ for Windows, meaning Endpoint Sensor can block Office save/export operations on Windows endpoints (within the documented Office apps)."
+        },
+        "macos": {
+          "warn": "N; for macOS, “Saving files in Microsoft Office” and “Saving and exporting files in Microsoft Office” both show Tracing = No, Blocking = No, so there is no direct save/export event to warn on; any enforcement must come from other actions (e.g., later upload, copy/move, or print/app‑access), not from save_as itself.",
+          "block": "N; blocking of save/export in Office is not supported on macOS according to Endpoint Sensor Coverage; macOS save/export is effectively monitor‑only via subsequent actions (e.g., upload/print/move), not at the export step."
+        },
+        "linux": {
+          "warn": "N; for Linux there is no Office‑specific row; “Saving and exporting files in Microsoft Office” is Windows‑only. Linux editors often implement Save/Save As via move/rename semantics, and Endpoint Sensor notes that only “true creates” are recorded as creates; move/rename behavior falls under generic Move rules, not under an Office save/export action.",
+          "block": "N; Linux has no explicit coverage for Office save/export; blocking would only occur indirectly through generic Move/Copy or Upload events. Endpoint Sensor Coverage calls out that on Linux, blocking is CI‑only and not supported on RHEL 8, but this applies to generic actions, not a distinct save_as surface."
+        }
+      },
+      "caveats": "Exported File is a Windows‑only first‑class endpoint action for Office: Office save/export operations are traceable and blockable on Windows (Word, Excel, PowerPoint), with no equivalent save/export action on macOS or Linux. On macOS and Linux, “Save As/Export” should be modeled via other actions (Create, Move, Upload, Print, App Access) rather than as a separate enforcement surface. Any Linux enforcement is via generic CI‑backed actions, not an Office‑specific save_as.",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "Low"
+    },
+    {
+      "action": "Downloaded file",
+      "event_type": "download",
+      "sensor_type": "Endpoint Sensor Browser",
+      "explanation": "Downloading from supported browsers with browser extensions installed",
+      "support": {
+        "windows": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "macos": {
+          "warn": "Y",
+          "block": "Y"
+        },
+        "linux": {
+          "warn": "Y",
+          "block": "Y; Linux Sensor does not support blocking on RHEL 8."
+        }
+      },
+      "caveats": "Yes applies only to (installed) supported browers: https://docs.cyberhaven.io/latest/docs/browser-extension-details - Recommend client use Chrome if stable enforcement is required (Chrome is the only browser supported across every major OS type).",
+      "documentation_source": "https://docs.cyberhaven.io/docs/endpoint-sensor-coverage",
+      "confidence": "High"
+    }
+  ]
+}

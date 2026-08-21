@@ -1,0 +1,14 @@
+{
+  "id": "019d513d-04c7-7dc1-bdf0-1061065a6fb0",
+  "name": "Websites - Unauthorized - Incognito Domain/URL [contains]",
+  "description": "Intent: Unauthorized Incognito and anonymizer URL substrings — populate with domain / URL fragments matching known anonymizer infrastructure (e.g., .onion, tor-exit, anonymizer keywords, known free-VPN proxy hosts). Drives the Unauthorized partition on M1090 / W1090 / B1080 (Incognito / private-mode activity). Lower priority unless your org actively restricts anonymity tooling. Exclusions: do not add corporate VPN gateways or sanctioned proxy hosts; do not block on all HTTPS — keep fragments specific to true anonymizers.",
+  "type": "unmanaged",
+  "created_at": "2026-04-03T02:47:26.663893936Z",
+  "updated_at": "2026-04-03T02:47:26.663893936Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "INCOGNITO"
+  ]
+}

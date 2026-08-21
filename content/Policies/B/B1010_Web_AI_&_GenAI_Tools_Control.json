@@ -1,0 +1,265 @@
+{
+  "id": "019cb5cb-74a2-78f4-bcec-0fc19c08c7ca",
+  "version": "019e1134-237a-7b9f-b42d-c90aea911a25",
+  "type": "data_protection",
+  "name": "B1010 - Web - AI & GenAI Tools Control",
+  "description": "Intent: Block-tier hard enforcement on Web clipboard paste and upload into the Unauthorized GenAI surface at sensitivity floor [3,4] — shuts down sensitive data exfil into non-sanctioned LLMs and personal AI accounts. Exclusions: excludes domains in Websites_Authorized_Gen_AI_Domains_CAU_[is] and internal users in Users_Authorized_Internal_User_Suffixes_[ends_with]; ships disabled by default — enable only after the Authorized GenAI list is populated and W1011 reviews are clean. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "website.Generative AI",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "genai_apps",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "5f7120686f524ef349a041c5cfdf759ee3de1c0b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "list_ends_with",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "b7cc5c3c4f198cdcb50e924a778e2dec08947943",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c20d7-3f2f-7b53-8302-682c694e3c6c"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "genai_apps",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Generative AI",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "5f7120686f524ef349a041c5cfdf759ee3de1c0b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "cloud_app_account",
+            "operator": "matches_regexp",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "$",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "clipboard_copypaste",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "upload",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "genai_apps",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "website.Generative AI",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "domain",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "5f7120686f524ef349a041c5cfdf759ee3de1c0b",
+                "unit": "size_unit_unspecified",
+                "list_id": "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+      "019c20d7-3f2f-7b53-8302-682c694e3c6c",
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517",
+      "019db8ba-68e2-773b-a8cc-54c94ec6d517"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "3a986d99-841e-4c4f-b5bb-a104d107fcdc",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T22:22:15.714584177Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T09:24:50.130194177Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

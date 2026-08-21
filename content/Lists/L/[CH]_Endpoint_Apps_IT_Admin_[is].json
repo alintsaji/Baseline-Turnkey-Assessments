@@ -1,0 +1,26 @@
+{
+  "id": "019e1022-6dca-704f-8a01-840899c1a761",
+  "name": "[CH] Endpoint Apps - IT Admin [is]",
+  "description": "Intent: [CH] Cyberhaven-curated IT Admin tool app names — PowerShell, regedit, Active Directory tools, sudo, RDP clients, sysinternals, terminal multiplexers, etc. Drives the IT-admin sub-segmentation on M5080 under the M5000 umbrella. Curated baseline — flags admin-tool execution outside documented IT staff. Exclusions: do not remove curated entries; reduce false-positive noise by adding user-conditions for documented sysadmin groups at the warn/block tier rather than trimming this list.",
+  "type": "unmanaged",
+  "created_at": "2026-05-10T04:25:52.330014159Z",
+  "updated_at": "2026-05-10T04:25:52.330014159Z",
+  "created_by": "nick.dobbs@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 13,
+  "items": [
+    "aria2",
+    "axel",
+    "bbcp",
+    "cmd",
+    "curl",
+    "ftp",
+    "lftp",
+    "putty",
+    "scp",
+    "sftp",
+    "udr",
+    "wget",
+    "xcopy"
+  ]
+}

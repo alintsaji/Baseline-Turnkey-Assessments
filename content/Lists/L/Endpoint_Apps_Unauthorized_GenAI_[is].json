@@ -1,0 +1,14 @@
+{
+  "id": "019dd5f2-45d3-7358-bab4-bc625ba7916b",
+  "name": "Endpoint Apps - Unauthorized - GenAI [is]",
+  "description": "Intent: Endpoint apps that implement GenAI capabilities but are explicitly prohibited — populate with app-name patterns of unauthorized desktop GenAI clients (e.g., unsanctioned local LLM runners, a competitor AI assistant). Currently unconsumed — staged for future per-app GenAI segmentation beyond the [CH]-curated baseline; expected consumer surface is the M5030 / W5000 / B5000 endpoint-app pipeline. Exclusions: do not duplicate the [CH] curated GenAI list — extend the customer list only for org-specific prohibitions; do not add legitimate developer tooling (Copilot, Cursor) unless your policy truly prohibits them.",
+  "type": "unmanaged",
+  "created_at": "2026-04-28T21:15:17.843212975Z",
+  "updated_at": "2026-05-10T04:30:59.657497135Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "nick.dobbs@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//placeholder"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "019cb4d0-f55d-75b4-946e-26510fbcba40",
+  "version": "019e1301-ae6d-7c70-b0f8-9910b78d4a17",
+  "type": "data_protection",
+  "name": "B7000 - Removable Media Control",
+  "description": "Intent: Block-tier hard enforcement on Removable Media copy / move / rename_copy / download / save_as / sent_to_printer at sensitivity floor [3,4] — shuts down USB / SD / removable-storage exfil of sensitive content. Exclusions: excludes devices in USB_Authorized_Device_IDs_[is]; ships disabled by default — populate the Authorized USB list with every corporate encrypted device before enabling, otherwise legitimate copies will be blocked. Requirements: WIP — pending analyst testing.",
+  "severity": "critical",
+  "disabled": true,
+  "query": {
+    "rules": [
+      {
+        "conditions": [
+          {
+            "field_name": "event_type",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "copy",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "rename_copy",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "download",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "save_as",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "move",
+                "unit": "size_unit_unspecified"
+              },
+              {
+                "value": "sent_to_printer",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "location",
+            "operator": "is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "removable_media",
+                "unit": "size_unit_unspecified"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": false
+          },
+          {
+            "field_name": "removable_device_usb_id",
+            "operator": "list_is",
+            "selector": "match_any",
+            "values": [
+              {
+                "value": "4a4255785dff9bd070f1309f6f8b4e34e3c59238",
+                "unit": "size_unit_unspecified",
+                "list_id": "019c219c-d224-766f-9b9c-bff44f0b0af9"
+              }
+            ],
+            "case_sensitive": false,
+            "match_path_delimiters": false,
+            "negated": true
+          }
+        ]
+      }
+    ],
+    "list_references": [
+      "019c219c-d224-766f-9b9c-bff44f0b0af9"
+    ],
+    "exclusion_ids": []
+  },
+  "rule": {
+    "id": "61cc1670-57a6-48a9-8391-4fad19937fda",
+    "create_incident": true,
+    "disable_ai_incidents": false,
+    "record_screenshots": false,
+    "inspect_content": false,
+    "capture_content": true,
+    "notify_enabled": false,
+    "notify_status": "disabled",
+    "realtime_response_config": {
+      "show_title": true,
+      "show_logo": true,
+      "require_justification": true,
+      "should_ack_warning": false,
+      "allow_request_review": false,
+      "override_enabled": false,
+      "warning_dialog": {
+        "title": "Warning: violation of Proserv staging security policy",
+        "explanation": "The action you just performed violates Proserv staging security policies",
+        "placeholder": "Optional: Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "blocking_dialog": {
+        "title": "Action Blocked: {{action}} to {{destination}}",
+        "explanation": "The action you just performed violates your organization's {{category}} policy for {{dataset}}.",
+        "placeholder": " Please, provide a justification for your action",
+        "check_text": "I acknowledge that I have read and understood this message",
+        "review_check_text": "I received this by mistake, please review and update this policy",
+        "submit_label": "I UNDERSTAND",
+        "allow_label": "ALLOW"
+      },
+      "incident_action": "block"
+    }
+  },
+  "dataset_ids": [
+    "1050a7b2-b1d0-49c9-960a-ac3aba47a9b4",
+    "9db19cac-cb04-47cc-a3ba-376fdcf2ca9a"
+  ],
+  "created_at": "2026-03-03T17:48:39.133371273Z",
+  "created_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "last_modified": "2026-05-10T17:48:57.806230692Z",
+  "last_modified_by": "Z1QA9RpnDacmwzTAG8B7womMfc52",
+  "backfills_enabled": true,
+  "selection_type": "sensitivity",
+  "dataset_sensitivities": [
+    4,
+    3
+  ]
+}

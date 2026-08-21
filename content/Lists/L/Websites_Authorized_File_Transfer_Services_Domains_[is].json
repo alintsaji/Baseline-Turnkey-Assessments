@@ -1,0 +1,14 @@
+{
+  "id": "019dd5ea-cf66-7e00-8532-6ac1a38f17df",
+  "name": "Websites - Authorized - File Transfer Services Domains [is]",
+  "description": "Intent: Authorized file-transfer service domains — populate with sanctioned file-share platforms (e.g., wetransfer.com (Pro), aspera.ibm.com, tresorit.com, citrix-sharefile.com). Drives the Authorized split on M1050 and is negated in M1051 / W1051 / B1050 to define the unauthorized transfer surface. Lower priority — populate if you treat file-transfer as a distinct sanctioned channel separate from general cloud storage. Exclusions: do not add public consumer-tier file-sharing; do not add P2P / direct-share without audit controls.",
+  "type": "unmanaged",
+  "created_at": "2026-04-28T21:07:08.774913229Z",
+  "updated_at": "2026-04-28T21:07:08.774913229Z",
+  "created_by": "patrick.collier@cyberhaven.com",
+  "updated_by": "patrick.collier@cyberhaven.com",
+  "size": 1,
+  "items": [
+    "//Authorized File Transfer Domains"
+  ]
+}
